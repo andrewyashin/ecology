@@ -20,7 +20,7 @@
             width: 1000px;
         }
     </style>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCZtLeNqx2C3qT6PUT3soS42nmW-I4EKqw"></script>
     <script type="text/javascript">
 
         var markers = [];

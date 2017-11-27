@@ -37,7 +37,6 @@ public class PlacesServiceImpl implements PlacesService {
         place.setName(name);
         place.setLatitude(latitude);
         place.setLongitude(longitude);
-
         return save(place);
     }
 
