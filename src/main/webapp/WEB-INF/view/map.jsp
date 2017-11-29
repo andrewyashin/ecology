@@ -13,11 +13,10 @@
         html, body{
             height:100%;
             margin: 0;
-            padding: 20px;
         }
         #map_canvas {
-            height: 700px;
-            width: 1000px;
+            height: 100%;
+            width: 100%;
         }
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCZtLeNqx2C3qT6PUT3soS42nmW-I4EKqw"></script>
