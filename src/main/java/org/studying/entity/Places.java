@@ -3,12 +3,12 @@ package org.studying.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
 @Table(name = "places")
 public class Places {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -23,4 +23,6 @@ public class Places {
     @Column(name = "longitude")
     private Double longitude;
 
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "places")
+    public List<Emissions> emissions;
 }
