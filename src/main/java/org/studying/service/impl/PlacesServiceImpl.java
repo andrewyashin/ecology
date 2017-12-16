@@ -2,8 +2,12 @@ package org.studying.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.studying.dto.EmissionsData;
+import org.studying.dto.PlacesWithEmissionsData;
+import org.studying.entity.Emissions;
 import org.studying.entity.Places;
 import org.studying.repository.PlacesRepository;
+import org.studying.service.EmissionsService;
 import org.studying.service.PlacesService;
 
 import java.util.ArrayList;
@@ -14,11 +18,34 @@ public class PlacesServiceImpl implements PlacesService {
     @Autowired
     private PlacesRepository placesRepository;
 
+    @Autowired
+    private EmissionsService emissionsService;
+
     @Override
-    public List<Places> getAllPlaces() {
+    public List<PlacesWithEmissionsData> getAllPlaces() {
+        List<PlacesWithEmissionsData> result = new ArrayList<>();
+
         List<Places> placesList = new ArrayList<>();
         placesRepository.findAll().forEach(placesList::add);
-        return placesList;
+
+        List<Long> emissionsOnlyDangerous = new ArrayList<>();
+        emissionsService.getOnlyDangerous().forEach(item -> emissionsOnlyDangerous.add(item.getIdOfPlaces()));
+
+        for (Places places: placesList) {
+            PlacesWithEmissionsData data = new PlacesWithEmissionsData();
+            data.setId(places.getId());
+            data.setName(places.getName());
+            data.setLatitude(places.getLatitude());
+            data.setLongitude(places.getLongitude());
+            if (emissionsOnlyDangerous.contains(places.getId())) {
+                data.setIsDangerous(true);
+            } else {
+                data.setIsDangerous(false);
+            }
+
+            result.add(data);
+        }
+        return result;
     }
 
     @Override

@@ -23,13 +23,13 @@ INSERT INTO ecology.places(name, longitude, latitude) values
     ('PJSC Communalnik', 31.947806, 51.816667),
     ('Чернігівське лінійне виробниче управління магістральних газопроводів ПАТ <Укртрансгаз>', 31.4043137, 50.435882);
 
-insert into ecology.pollutants(name, VMV, GDV, class) values
-    ('Діоксид сірки', 6500, 500, 4),
-    ('Тверді речовини', 500, 50, 2),
-    ('Сполуки азоту', 100, 5, 3),
-    ('Оксид вуглецю', 5000, 500, 4),
-    ('Неметанові леткі органічні сполуки', 1000, 20, 2),
-    ('Метан', 500, 20, 2);
+insert into ecology.pollutants(name, VMV, GDV, class, tax) values
+    ('Діоксид сірки', 6500, 500, 4, 111.26),
+    ('Тверді речовини', 500, 50, 2, 74.17),
+    ('Сполуки азоту', 100, 5, 3, 1968.65),
+    ('Оксид вуглецю', 5000, 500, 4, 74.17),
+    ('Неметанові леткі органічні сполуки', 1000, 20, 2, 3224.65),
+    ('Метан', 500, 20, 2, 111.26);
 
 insert into ecology.emissions(pollutants_id, emissionVolume, places_id) values
     (1, 1100684.9315, 2),
@@ -51,4 +51,3 @@ insert into ecology.emissions(pollutants_id, emissionVolume, places_id) values
     (3, 2283.10502, 17),
     (4, 6392.69406, 17),
     (6, 96689.49772, 17);
-

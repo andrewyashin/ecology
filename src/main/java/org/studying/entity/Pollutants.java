@@ -26,6 +26,9 @@ public class Pollutants {
     @Column(name = "class")
     private String classOfPollutant;
 
+    @Column(name = "tax")
+    private Double tax;
+
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "pollutants")
     public List<Pollutants> pollutants;
 }

@@ -32,6 +32,8 @@
         <td>Гранично допустимі викиди (мг/м3)</td>
         <td>Клас речовини</td>
         <td>Відсоток перебільшення</td>
+        <td>Податок (грн/т)</td>
+        <td>Загальний податок</td>
     </tr>
     <c:forEach items="${list}" var="list">
         <tr>
@@ -42,6 +44,8 @@
             <td>${list.gdv}</td>
             <td>Class №${list.classOfPollutant}</td>
             <td>${list.percent}%</td>
+            <td>${list.taxes}</td>
+            <td>${list.totalTax}</td>
         </tr>
     </c:forEach>
 </table>

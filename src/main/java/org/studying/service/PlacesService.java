@@ -1,11 +1,12 @@
 package org.studying.service;
 
+import org.studying.dto.PlacesWithEmissionsData;
 import org.studying.entity.Places;
 
 import java.util.List;
 
 public interface PlacesService {
-    List<Places> getAllPlaces();
+    List<PlacesWithEmissionsData> getAllPlaces();
     Places getById(Long id);
 
     Places save(Places place);

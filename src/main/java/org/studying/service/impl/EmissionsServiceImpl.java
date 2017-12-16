@@ -24,6 +24,7 @@ public class EmissionsServiceImpl implements EmissionsService {
         for (Emissions emissions : emissionsList) {
             if (emissions.pollutants.getVmv() <= emissions.getEmissionVolume()) {
                 EmissionsData data = new EmissionsData();
+                data.setIdOfPlaces(emissions.places.getId());
                 data.setNameOfPlace(emissions.places.getName());
                 data.setNameOfPollutant(emissions.pollutants.getName());
                 data.setClassOfPollutant(emissions.pollutants.getClassOfPollutant());
@@ -31,7 +32,8 @@ public class EmissionsServiceImpl implements EmissionsService {
                 data.setGdv(emissions.pollutants.getGdv());
                 data.setVmv(emissions.pollutants.getVmv());
                 data.setPercent(getPercentFromEmission(emissions));
-
+                data.setTaxes(emissions.pollutants.getTax());
+                data.setTotalTax(getTaxesInUahPerTon(emissions));
                 resultList.add(data);
             }
         }
@@ -41,5 +43,10 @@ public class EmissionsServiceImpl implements EmissionsService {
 
     private double getPercentFromEmission(Emissions emissions) {
         return (int) (emissions.getEmissionVolume() / emissions.pollutants.getVmv() * 100);
+    }
+
+    private double getTaxesInUahPerTon(Emissions emissions) {
+        double ton = 0.008760 * emissions.getEmissionVolume();
+        return ton * emissions.getPollutants().getTax();
     }
 }
